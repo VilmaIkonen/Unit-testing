@@ -22,3 +22,4 @@
   ```
 5. Create test folder __tests__ (with 2 underscores before and after the folder name!)
 6. Create tests
+7. Run tests in terminal ```npm test```
