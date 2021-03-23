@@ -1,0 +1,15 @@
+{
+  "name": "01_firstJestTest",
+  "version": "1.0.0",
+  "description": "1. create project folder 2. create package.json  ```npm init -y``` 3. Install Jest as development dependency ```npm install jest --save-dev``` (installation could be done as global with -g flag)",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
