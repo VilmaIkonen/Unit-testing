@@ -34,7 +34,10 @@ Returns the difference a - b. The numbers are passed to the function as paramete
 [3, -2.5, 5.5],
 [-3, -2.5, -0.5],
 [2.5, -2.5, 5],
-[2.4, -2.5, 0.1]
+[2.4, -2.5, 0.1],
+[0, 10.5, -10.5],
+[10.5, 0, 10.5],
+[0.0, 0.0, 0.0]
 
 #### 2.3 Missing parameter
 - substract() throws an exception `'parameter missing'`
