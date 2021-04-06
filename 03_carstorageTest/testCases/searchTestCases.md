@@ -40,7 +40,7 @@ expect:
     {"model": "Nova", "licence": "ABC-1", "type": "GT"}
 ]
 
-### Test4: search 
+### Test4: search with licence 'X-1'
 call: search('licence', 'X-1')
 expect: []
 
@@ -48,7 +48,8 @@ expect: []
 call: search('type', 'XL')
 expect: 
 [
-    {"model": "Nova", "licence": "ABC-1", "type": "GT"}
+     {"model": "Bored T-Model", "licence": "XYZ-987", "type": "XL"},
+    {"model": "Bored T-Model", "licence": "ABE-13", "type": "XL"}
 ]
 
 ### Test6: search with type 'XL'

@@ -30,7 +30,7 @@ describe('Testing function search', ()=>{
         });
     
         test('search with model "X"', ()=>{
-            expect(functions.search('model', 'X')).toEqual([result]);
+            expect(functions.search('model', 'X')).toEqual([]);
         }); 
     });   
 
@@ -43,7 +43,7 @@ describe('Testing function search', ()=>{
         expect(functions.search('licence', 'ABC-1')).toEqual(result);
         });
         test('search with licence "X-1"', ()=>{
-        expect(functions.search('licence', 'X-1')).toEqual(result);
+        expect(functions.search('licence', 'X-1')).toEqual([]);
         });
     })
 
