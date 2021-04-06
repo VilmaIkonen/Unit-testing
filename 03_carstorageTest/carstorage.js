@@ -11,34 +11,30 @@ function getWithLicence(licence){
         }
     }
     return null;
-};
-
-function search(key, value) {
-    if(key && value) {
-        if(key === 'model' || key === 'licence' === key === 'type') {
-            const foundCars = [];
-            for (let car of cars) {
-                if (car[key] === value) {
-                    foundCars.push(car);
-                }
-            }
-            return foundCars;  
-        } else {
-            throw new Error('key not found')
-        }
-    } else {
-        throw new Error('parameter missing');
-    }
-
-    // if (!key || !value) throw new Error('parameter missing');
-  
-    // const foundCars = [];
-    // for (let car of cars) {
-    //     if (car.model === model || car.licence === licence || car.type === type) {
-    //         foundCars.push(car);
-    //     }
-    // }
-    // return foundCars;    
 }
 
-module.exports = { getWithLicence, search }
+function search(key,value){
+    if(key!=undefined && value!=undefined){
+        // if(key && value){ //results parameter missing exception for empty string
+        if(key==='model' || key==='licence' || key==='type'){
+            const found=[];
+            for(let car of cars) {
+                if(car[key]===value) {
+                    found.push(car);
+                }
+            }
+            return found;
+        }
+        else{
+            throw new Error('key not found');
+        }
+    }
+    else {
+        throw new Error('parameter missing');
+    }
+}
+
+module.exports={
+    getWithLicence, 
+    search
+}
