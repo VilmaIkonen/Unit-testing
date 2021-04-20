@@ -106,25 +106,62 @@ describe('Testing method getAllProductsByType(type)', () => {
 });
 
 // 6. Test cases for method hasAccessories(id)
-describe('Testing some method', () => {
-    test('test smth', () => { });
-    test('test smth', () => { });
+describe('Testing method hasAccessories(id)', () => {
+  const productRegister = new ProductRegister(products);
+
+    test('product has accessories', () => {
+      expect(productRegister.hasAccessories("1")).toEqual(true)
+    });
+
+     test('product does not have accessories', () => {
+      expect(productRegister.hasAccessories("3")).toEqual(false)
+    });
 });
 
 // 7. Test cases for method getProductAccessories(id)
-describe('Testing some method', () => {
-  test('test smth', () => { });
-  test('test smth', () => { });
+describe('Testing method getProductAccessories(id)', () => {
+
+  test('get accessories with id', () => {
+    expect(productRegister.getProductAccessories("1")).toEqual(["cleaning brush", "coffee cup"])
+  });
+  
+  test('id not found', () => {
+    expect(productRegister.getProductAccessories("6")).toEqual([])
+  });
+
+  test('missing parameter', () => {
+    expect(productRegister.getProductAccessories()).toEqual([]);
+});
 });
 
 // 8. Test cases for method getPriceWithoutExtras(id)
-describe('Testing some method', () => {
-  test('test smth', () => { });
-  test('test smth', () => { });
+describe('Testing method getPriceWithoutExtra(id)', () => {
+  
+  test('get price without accessories', () => {
+    expect(productRegister.getPriceWithoutExtra("2").toEqual(99))
+  });
+
+  test('product id not found', () => {
+    expect(productRegister.getPriceWithoutExtra("6")).toThrow('nothing found with given id')
+  });
+
+  test('missing parameter', () => {
+    expect(productRegister.getPriceWithoutExtra()).toThrow('missing parameter')
+  });
 })
 
 // 9. Test cases for method getPriceOfTheExtras(id)
-describe('Testing some method', () => {
-  test('test smth', () => { });
-  test('test smth', () => { });
+describe('Testing method getPriceOfTheExtras(id)', () => {
+
+  test('get price with accessories', () => {
+    expect(productRegister.getPriceOfTheExtras("2").toEqual(25))
+  });
+  
+  test('id has no accessories', () => {
+    expect(productRegister.getPriceOfTheExtras("3").toEqual(0))
+  });
+
+  test('product id not found', () => {
+    expect(productRegister.getPriceOfTheExtras("6")).toThrow('nothing found with given id')
+  });
 })

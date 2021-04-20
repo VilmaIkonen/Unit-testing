@@ -1,15 +1,15 @@
 // 'use strict';
 
-// module.exports = class ProductStorage {
+module.exports = class ProductRegister {
 
-// 	constructor(jsonData) {
-// 		if(jsonData) {
-// 			this.storage = jsonData;
-// 		}
-// 		else { 
-// 			throw new Error('dataStorageProducts.json is missing');
-// 		}
-// 	} //end of constructor
+	constructor(jsonData) {
+		if(jsonData) {
+			this.storage = jsonData;
+		}
+		else { 
+			throw new Error('dataStorageProducts.json is missing');
+		}
+	} //end of constructor
 
 // 	getTypes() {
 // 		const types= [];
@@ -87,4 +87,4 @@
 // 		return null;
 // 	}
 
-// } //end of class
+} //end of class
