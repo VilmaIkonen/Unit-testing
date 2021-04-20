@@ -32,7 +32,7 @@ throws an exception `''data storage missing''`
 
 Method searches the datastorage for an object with given key. Key is unique.
 
-#### Test 1: get name of number "12345678"
+#### Test 1: get product with id "3"
 
 call: 
 ```js
@@ -50,7 +50,7 @@ expect to return:
   }
 ```
 
-#### Test 2: get name of wrong number "0000"
+#### Test 2: get product of wrong id "0"
 
 call: 
 ```js
@@ -66,7 +66,7 @@ storage.getById()
 ```
 expect to return `null`
 
-## **3. Test cases for method getAllIdsByModel(value)**
+<!-- ## **3. Test cases for method getAllIdsByModel(value)**
 
 ### getAllIdsByModel(value) API
 
@@ -97,9 +97,9 @@ call:
 ```js
 storage.getAllIdsByModel()
 ```
-expect to return `[]`
+expect to return `[]` -->
 
-## **3. Test cases for method getAllProductTypes()**
+## **4. Test cases for method getAllProductTypes()**
 
 ### getAllProductTypes() API
 
@@ -113,26 +113,31 @@ storage.getAllProductTypes()
 ```
 expect to return: 
 ```json
-  [{"type": "moccamaster"},
-   {"type": "vacuum cleaner",},
-   {"type": "radio"}]   
+  ["moccamaster", "vacuum cleaner", "radio"]   
 ```
 
-#### Test 2: no product types in register
+#### Test 2: product has no type
 
-call: 
-```js
-storage.getAllProductTypes()
+call with test data that has empty type:
+```json
+  [{
+    "id": 100,
+    "model": "MinEffect 1",
+    "type": "",
+    "accessories": [],
+    "price": 999,
+    "extras": []
+  }]
 ```
 expect to return `[]`
 
-## **4. Test cases for method getAllProductsByType(type)**
+## **5. Test cases for method getAllProductsByType(type)**
 
 ### getAllProductsByType(type) API
 
 Returns an array of product objects of given type
 
-#### Test 1: get all product types
+#### Test 1: get products by type
 
 call: 
 ```js
@@ -175,7 +180,7 @@ storage.getAllProductsByType()
 ```
 expect to throw 'missing parameter'
 
-## **5. Test cases for method hasAccessories(id)**
+## **6. Test cases for method hasAccessories(id)**
 
 ### hasAccessories(id) API
 
@@ -198,7 +203,7 @@ storage.hasAccessories("3")
 ```
 expect to return: `false` 
 
-## **6. Test cases for method getProductAccessories(id)**
+## **7. Test cases for method getProductAccessories(id)**
 
 ### getProductAccessories(id) API
 
@@ -231,7 +236,7 @@ storage.getProductAccessories()
 ```
 expect to return `[]`
 
-## **7. Test cases for method getPriceWithoutExtras(id)**
+## **8. Test cases for method getPriceWithoutExtras(id)**
 
 ### getPriceWithoutExtras(id) API
 
@@ -264,7 +269,7 @@ storage.getPriceWithoutExtras()
 ```
 expect to throw 'missing parameter'
 
-## **8. Test cases for method getPriceOfTheExtras(id)**
+## **9. Test cases for method getPriceOfTheExtras(id)**
 
 ### getPriceOfTheExtras(id) API
 
