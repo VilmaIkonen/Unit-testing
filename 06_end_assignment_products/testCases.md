@@ -66,7 +66,7 @@ storage.getById()
 ```
 expect to return `null`
 
-<!-- ## **3. Test cases for method getAllIdsByModel(value)**
+## **3. Test cases for method getAllIdsByModel(value)**
 
 ### getAllIdsByModel(value) API
 
@@ -97,7 +97,7 @@ call:
 ```js
 storage.getAllIdsByModel()
 ```
-expect to return `[]` -->
+expect to return `[]`
 
 ## **4. Test cases for method getAllProductTypes()**
 
@@ -186,7 +186,7 @@ expect to throw 'missing parameter'
 
 Returns boolean values based on whether accessories are available or not.
 
-#### Test 1: 
+#### Test 1 product has accessories
 
 call: 
 ```js

@@ -7,12 +7,12 @@ const products = require('../dataStorageProducts.json');
 describe('Testing constructor', () => {
 
     test('Object created with json object as a parameter',() => {
-        const productRegister = new ProductStorage(products);
+        const productRegister = new ProductRegister(products);
         expect(productRegister.storage).toEqual(products);
     });
 
     test('Missing parameter throws an exception', () => {
-        expect(() => new ProductStorage()).toThrow('data storage missing');
+        expect(() => new ProductRegister()).toThrow('data storage missing');
     });
 });
 
@@ -20,17 +20,30 @@ describe('Testing constructor', () => {
 describe('Testing method getById(id)', () => {
   const productRegister = new ProductRegister(products);
 
-  test('get product with id "3"', ()=>{
-      expect(productRegister.getById("3"))
+  test('get product with id "1"', ()=>{
+      expect(productRegister.getById(1))
           .toEqual(
-          {
-            "id": 3,
-            "model": "MaxEffect 2000",
-            "type": "radio",
-            "accessories": [],
-            "price": 29,
-            "extras": []
-          }
+            {
+              "id": 1,
+              "model": "Future 2025",
+              "type": "moccamaster",
+              "accessories": ["cleaning brush", "coffee cup"],
+              "price": 99,
+              "extras": [
+                {
+                  "name": "coffee",
+                  "price": 15
+                },
+                {
+                  "name": "spoon",
+                  "price": 10
+                },
+                {
+                  "name": "color gold",
+                  "price": 100
+                }
+              ]
+            }
         );
   });
 
@@ -44,7 +57,27 @@ describe('Testing method getById(id)', () => {
 });
 
 // 3. Test cases for method getAllIdsByModel(value)
-describe('Testing method getAllIdsByModel(value)', () => { });
+describe('Testing method getAllIdsByModel(value)', () => {
+  const productRegister = new ProductRegister(products);
+
+  test('get ids of model "MaxEffect 2000"', () => {
+      const expectedValue =
+        [{
+          "id": 3,
+          "model": "MaxEffect 2000",
+          "type": "radio",
+          "accessories": [],
+          "price": 29,
+          "extras": []
+        }]
+
+      expect(productRegister.getAllIdsByModel('MaxEffect 2000')).toEqual(expectedValue);
+  });
+
+  test('missing parameter', () => {
+      expect(productRegister.getAllIdsByModel()).toEqual([]);
+  });
+});
 
 // 4. Test cases for method getAllProductTypes()
 describe('Testing method getAllProductTypes()', () => {
