@@ -24,7 +24,8 @@ module.exports = class ProductRegister {
           price: product.price,
           extras: product.extras
         };
-      } else {
+      } 
+      else {
         return null
       }	
 		}		
@@ -49,100 +50,110 @@ module.exports = class ProductRegister {
 		}
 		return productsFound
   }
-  // 	getAllNumbersByType(type) {
-// 		if (!type) throw new Error('type missing');
 
-// 		const numbersFound= [];
-// 		for( let person of this.storage) {
-// 			for(let phone of person.phones) {
-// 				if(phone.type===type) {
-// 					numbersFound.push({
-// 						firstname:person.firstname,
-// 						lastname:person.lastname,
-// 						number:{
-// 							type:phone.type,
-// 							tel: phone.number
-// 						}
-// 					});
-// 				}
-// 			}
-// 		}
-// 		return numbersFound;
+  // 4. getAllProductTypes()
+  getAllProductTypes() {
+		const types= [];
+		for(let product of this.storage) {		
+      if(!types.includes(product.type)) {
+        types.push(product.type);
+      }	
+      if(!product.type) {return []}	
+		}
+		return types;
+	}
 
-	// getTypes() {
-	// 	const types= [];
-	// 	for(let person of this.storage) {
-	// 		for(let phone of person.phones) {
-	// 			if(!types.includes(phone.type)) {
-	// 				types.push(phone.type);
-	// 			}
-	// 		}
-	// 	}
-	// 	return types;
-	// } 
+  // 5. getAllProductsByType(type)
+  getAllProductsByType(type) {
+    if(!type) return null
+    
+		const productsFound = [];
+		for(let product of this.storage) {			
+      if(product.type === type) {
+        productsFound.push({
+          id: product.id,
+          model: product.model,
+          type: product.type,
+          accessories: product.accessories,
+          price: product.price,
+          extras: product.extras
+        });
+      }	
+      if(product.type === undefined) {
+        return []
+      }
+		}
+		return productsFound
+  }
+  
+  // 6. hasAccessories(id)
+  hasAccessories(id) {
+		for(let product of this.storage) {			
+      if(product.id === id && product.accessories !== '') {
+        return true
+      } 
+      else {
+        return false
+      }	
+		}		
+	}
 
-// 	getNumbersByType(firstname, lastname, type) {
-// 		if(firstname && lastname && type) {
-// 			const numbersFound= [];
-// 			for(let person of this.storage) {
-// 				if(person.firstname === firstname && person.lastname === lastname) {
-// 					for(let phone of person.phones) {
-// 						if(phone.type === type) {
-// 							numbersFound.push(phone.number);
-// 						}
-// 					}
-// 				}
-// 			}  
-// 			return numbersFound;
-// 		}
-// 		else {
-// 			throw new Error('missing parameter');
-// 		}
-// 	} // end of getNumbersByType
+  // 7. getProductAccessories(id)
+  getProductAccessories(id) {
+    const accessoriesFound = [];
+		for(let product of this.storage) {			
+      if(product.id === id && product.accessories.length >0) {
+        accessoriesFound.push(product.accessories);
+      } 
+      if(id === undefined || !id) {
+        return []
+      }
+      return accessoriesFound      	
+		}		
+  }
 
-// 	getAllNumbersByType(type) {
-// 		if (!type) throw new Error('type missing');
+  // 8. getPriceWithoutExtras(id)
+  getPriceWithoutExtras(id) {    
+    if(!id) throw new Error('missing parameter') 
+		for(let product of this.storage) {			
+      if(product.id === id) {
+        return {price: product.price}
+      }      	   
+		}
+	}
 
-// 		const numbersFound= [];
-// 		for( let person of this.storage) {
-// 			for(let phone of person.phones) {
-// 				if(phone.type===type) {
-// 					numbersFound.push({
-// 						firstname:person.firstname,
-// 						lastname:person.lastname,
-// 						number:{
-// 							type:phone.type,
-// 							tel: phone.number
-// 						}
-// 					});
-// 				}
-// 			}
-// 		}
-// 		return numbersFound;
-// 	} // end of getAllNumbersByType
+  // // 9.  getPriceOfTheExtras(id)
+  getPriceOfTheExtras(id) {
+    if(!id) throw new Error('missing parameter') 
 
-// 	getAllNumbers() {
-// 		const found= [];
-// 		for(let person of this.storage) {
-// 			if(person.phones && person.phones.length>0) {
-// 				found.push(person);
-// 			}
-// 		}
-// 		return found;
-// 	} // end of getAllNumbers
+    for(let product of this.storage)  {
+      let item = product.extras
+      const sum = item.reduce((prev, curr) => {
+        return prev + curr.price
+      }, 0)
+      return sum
+  
+       
+     
+        // if(product.id == undefined) throw new Error('nothing found with given id')
+        // if(product.extras === []) return 0;
+      }
+      
+    }
 
-// 	getName(number) {
-// 		for(let person of this.storage) {
-// 			for(let phone of person.phones) {
-// 				if(phone.number===number) {
-// 					return {
-// 						firstname:person.firstname,
-// 						lastname:person.lastname
-// 					};
-// 				}
-// 			}
-// 		}
-// 		return null;
-// 	}
+  }
 
-} //end of class
+  // getPriceOfTheExtras(id) {
+  //   if(!id) throw new Error('missing parameter') 
+
+  //  if(key === 'price') {
+  //    const itemPrices = []
+  //    for(let product of this.storage) {
+
+  //    }
+  //  }
+  
+       
+     
+        // if(product.id == undefined) throw new Error('nothing found with given id')
+        // if(product.extras === []) return 0;

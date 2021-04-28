@@ -20,7 +20,7 @@ describe('Testing constructor', () => {
 describe('Testing method getById(id)', () => {
   const productRegister = new ProductRegister(products);
 
-  test('get product with id "1"', ()=>{
+  test('get product with id "1"', () => {
       expect(productRegister.getById(1))
           .toEqual(
             {
@@ -81,13 +81,13 @@ describe('Testing method getAllIdsByModel(value)', () => {
 
 // 4. Test cases for method getAllProductTypes()
 describe('Testing method getAllProductTypes()', () => {
-    const productRegister = new ProductRegister(products);
+    let productRegister = new ProductRegister(products);
 
     test('get all product types', () => {
-        expect(productRegister.getAllProductTypes()).toEqual(["home", "work","mobile"])
+        expect(productRegister.getAllProductTypes()).toEqual(["moccamaster", "vacuum cleaner", "radio"])
     });
 
-    test('product has no type)',() => {
+    test('product has no type', () => {
         const testData =
         [{
           "id": 100,
@@ -108,33 +108,24 @@ describe('Testing method getAllProductsByType(type)', () => {
   const productRegister = new ProductRegister(products);
 
   test('get products by type', () => {
-    expect(productRegister.getAllProductsByType("vacuum cleaner")).toEqual(
-      [{
-        "id": 2,
-        "model": "Beast II",
-        "type": "vacuum cleaner",
-        "accessories": ["bags", "filter set", "delux brush set"],
-        "price": 99,
-        "extras": [
-          {
-            "name": "manual",
-            "price": 15
-          },
-          {
-            "name": "warranty",
-            "price": 10
-          }
-        ]
-      }]
-    )
+    const expectedValue = 
+    [{
+      "id": 3,
+      "model": "MaxEffect 2000",
+      "type": "radio",
+      "accessories": [],
+      "price": 29,
+      "extras": []
+    }]
+    expect(productRegister.getAllProductsByType("radio")).toEqual(expectedValue)
   });
 
   test('product type is not in register', () => {
-    expect(productRegister.getAllProductsByType("Xbox").toEqual([]))
+    expect(productRegister.getAllProductsByType("Xbox")).toEqual([])
   });
 
   test('missing parameter', () => {
-    expect(productRegister.getAllProductsByType().toBeNull());
+    expect(productRegister.getAllProductsByType()).toBeNull();
   });
 });
 
@@ -143,23 +134,24 @@ describe('Testing method hasAccessories(id)', () => {
   const productRegister = new ProductRegister(products);
 
     test('product has accessories', () => {
-      expect(productRegister.hasAccessories("1")).toEqual(true)
+      expect(productRegister.hasAccessories(1)).toEqual(true)
     });
 
      test('product does not have accessories', () => {
-      expect(productRegister.hasAccessories("3")).toEqual(false)
+      expect(productRegister.hasAccessories(3)).toEqual(false)
     });
 });
 
 // 7. Test cases for method getProductAccessories(id)
 describe('Testing method getProductAccessories(id)', () => {
+  const productRegister = new ProductRegister(products);
 
-  test('get accessories with id', () => {
-    expect(productRegister.getProductAccessories("1")).toEqual(["cleaning brush", "coffee cup"])
+  test('get accessories with id', () => {    
+    expect(productRegister.getProductAccessories(1)).toEqual(["cleaning brush", "coffee cup"])
   });
   
   test('id not found', () => {
-    expect(productRegister.getProductAccessories("6")).toEqual([])
+    expect(productRegister.getProductAccessories(6)).toEqual([])
   });
 
   test('missing parameter', () => {
@@ -168,33 +160,39 @@ describe('Testing method getProductAccessories(id)', () => {
 });
 
 // 8. Test cases for method getPriceWithoutExtras(id)
-describe('Testing method getPriceWithoutExtra(id)', () => {
+describe('Testing method getPriceWithoutExtras(id)', () => {
+  const productRegister = new ProductRegister(products);
   
   test('get price without accessories', () => {
-    expect(productRegister.getPriceWithoutExtra("2").toEqual(99))
+    expect(productRegister.getPriceWithoutExtras(2)).toEqual({"price": 99})
   });
 
   test('product id not found', () => {
-    expect(productRegister.getPriceWithoutExtra("6")).toThrow('nothing found with given id')
+    expect(() => productRegister.getPriceWithoutExtras(6)).toThrow('nothing found with given id')
   });
 
   test('missing parameter', () => {
-    expect(productRegister.getPriceWithoutExtra()).toThrow('missing parameter')
+    expect(() => productRegister.getPriceWithoutExtras()).toThrow('missing parameter')
   });
 })
 
 // 9. Test cases for method getPriceOfTheExtras(id)
 describe('Testing method getPriceOfTheExtras(id)', () => {
+  const productRegister = new ProductRegister(products);
 
   test('get price with accessories', () => {
-    expect(productRegister.getPriceOfTheExtras("2").toEqual(25))
+    expect(productRegister.getPriceOfTheExtras(2)).toEqual(25)
   });
   
   test('id has no accessories', () => {
-    expect(productRegister.getPriceOfTheExtras("3").toEqual(0))
+    expect(productRegister.getPriceOfTheExtras(3)).toEqual(0)
   });
 
   test('product id not found', () => {
-    expect(productRegister.getPriceOfTheExtras("6")).toThrow('nothing found with given id')
+    expect(() => productRegister.getPriceOfTheExtras(6)).toThrow('nothing found with given id')
+  });
+
+  test('missing parameter', () => {
+    expect(() => productRegister.getPriceOfTheExtras()).toThrow('missing parameter')
   });
 })
