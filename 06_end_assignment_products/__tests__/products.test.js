@@ -4,7 +4,7 @@ const ProductRegister = require('../productRegister');
 const products = require('../dataStorageProducts.json');
 
 // 1. Test cases for constructor
-describe('Testing constructor', () => {
+describe('1. Testing constructor', () => {
 
     test('Object created with json object as a parameter',() => {
         const productRegister = new ProductRegister(products);
@@ -17,7 +17,7 @@ describe('Testing constructor', () => {
 });
 
 // 2. Test cases for method getById(id)
-describe('Testing method getById(id)', () => {
+describe('2. Testing method getById(id)', () => {
   const productRegister = new ProductRegister(products);
 
   test('get product with id "1"', () => {
@@ -57,7 +57,7 @@ describe('Testing method getById(id)', () => {
 });
 
 // 3. Test cases for method getAllIdsByModel(value)
-describe('Testing method getAllIdsByModel(value)', () => {
+describe('3. Testing method getAllIdsByModel(value)', () => {
   const productRegister = new ProductRegister(products);
 
   test('get ids of model "MaxEffect 2000"', () => {
@@ -80,7 +80,7 @@ describe('Testing method getAllIdsByModel(value)', () => {
 });
 
 // 4. Test cases for method getAllProductTypes()
-describe('Testing method getAllProductTypes()', () => {
+describe('4. Testing method getAllProductTypes()', () => {
     let productRegister = new ProductRegister(products);
 
     test('get all product types', () => {
@@ -104,7 +104,7 @@ describe('Testing method getAllProductTypes()', () => {
 });
 
 // 5. Test cases for method getAllProductsByType(type)
-describe('Testing method getAllProductsByType(type)', () => {
+describe('5. Testing method getAllProductsByType(type)', () => {
   const productRegister = new ProductRegister(products);
 
   test('get products by type', () => {
@@ -130,7 +130,7 @@ describe('Testing method getAllProductsByType(type)', () => {
 });
 
 // 6. Test cases for method hasAccessories(id)
-describe('Testing method hasAccessories(id)', () => {
+describe('6. Testing method hasAccessories(id)', () => {
   const productRegister = new ProductRegister(products);
 
     test('product has accessories', () => {
@@ -143,7 +143,7 @@ describe('Testing method hasAccessories(id)', () => {
 });
 
 // 7. Test cases for method getProductAccessories(id)
-describe('Testing method getProductAccessories(id)', () => {
+describe('7. Testing method getProductAccessories(id)', () => {
   const productRegister = new ProductRegister(products);
 
   test('get accessories with id', () => {    
@@ -160,7 +160,7 @@ describe('Testing method getProductAccessories(id)', () => {
 });
 
 // 8. Test cases for method getPriceWithoutExtras(id)
-describe('Testing method getPriceWithoutExtras(id)', () => {
+describe('8. Testing method getPriceWithoutExtras(id)', () => {
   const productRegister = new ProductRegister(products);
   
   test('get price without accessories', () => {
@@ -177,7 +177,7 @@ describe('Testing method getPriceWithoutExtras(id)', () => {
 })
 
 // 9. Test cases for method getPriceOfTheExtras(id)
-describe('Testing method getPriceOfTheExtras(id)', () => {
+describe('9. Testing method getPriceOfTheExtras(id)', () => {
   const productRegister = new ProductRegister(products);
 
   test('get price with accessories', () => {

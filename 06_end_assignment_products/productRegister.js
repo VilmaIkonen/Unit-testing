@@ -100,60 +100,40 @@ module.exports = class ProductRegister {
 
   // 7. getProductAccessories(id)
   getProductAccessories(id) {
-    const accessoriesFound = [];
 		for(let product of this.storage) {			
       if(product.id === id && product.accessories.length >0) {
-        accessoriesFound.push(product.accessories);
+        return product.accessories;
       } 
-      if(id === undefined || !id) {
-        return []
-      }
-      return accessoriesFound      	
-		}		
+    }
+    return []	
   }
 
   // 8. getPriceWithoutExtras(id)
   getPriceWithoutExtras(id) {    
     if(!id) throw new Error('missing parameter') 
+    
 		for(let product of this.storage) {			
       if(product.id === id) {
         return {price: product.price}
       }      	   
 		}
+    throw new Error('nothing found with given id') 
 	}
 
-  // // 9.  getPriceOfTheExtras(id)
+  // 9.  getPriceOfTheExtras(id) // FIX ME
   getPriceOfTheExtras(id) {
     if(!id) throw new Error('missing parameter') 
-
-    for(let product of this.storage)  {
-      let item = product.extras
-      const sum = item.reduce((prev, curr) => {
-        return prev + curr.price
-      }, 0)
-      return sum
-  
-       
-     
-        // if(product.id == undefined) throw new Error('nothing found with given id')
-        // if(product.extras === []) return 0;
+    
+    for(let product of this.storage) {
+      if(product.id === id) {
+        let sum = 0;
+        for(let item of product.extras) {         
+          sum += item.price;          
+        }
+        return sum
       }
-      
     }
+    throw new Error('nothing found with given id') 
+  } 
+}
 
-  }
-
-  // getPriceOfTheExtras(id) {
-  //   if(!id) throw new Error('missing parameter') 
-
-  //  if(key === 'price') {
-  //    const itemPrices = []
-  //    for(let product of this.storage) {
-
-  //    }
-  //  }
-  
-       
-     
-        // if(product.id == undefined) throw new Error('nothing found with given id')
-        // if(product.extras === []) return 0;

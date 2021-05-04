@@ -72,12 +72,12 @@ Method searches the datastorage for an object with given key. Key is unique.
   - Return: returns the product object matching the id or null if there is no match
   - if parameter is missing, throws an exception `'parameter missing'`
 
-<!-- ### **getAllIdsByModel(value)**
+### **getAllIdsByModel(value)**
 
 Returns all ids of the products matching the value of model
   
   - Parameters: value of the property to be searched
-  - Return: Returns an array of product id where the products model matches the given value. If there is no match or parameter is missing, an empty array is returned. -->
+  - Return: Returns an array of product id where the products model matches the given value. If there is no match or parameter is missing, an empty array is returned.
   
 ### **getAllProductTypes()**
 
@@ -100,7 +100,6 @@ Returns an array of product objects of given type
 - Parameters: id of the product
 - Return: returns true if the product has accessories else returns false. If parameter id is missing false is returned
  
-
 
 ### **GetProductAccessories(id)**
 
