@@ -1,16 +1,6 @@
 {
-    "getAll":["select employeeId,firstname,lastname,department,",
-            "salary from employee"
-    ],
-    "get":[
-        "select employeeId,firstname,lastname,department,",
-        "salary from employee where employeeId=?"
-    ],
-    "insert":[
-        "insert into employee (firstname,lastname,department,",
-        "salary,employeeId) values (?,?,?,?,?)"
-    ],
-    "delete":[
-        "delete from employee where employeeId=?"
-    ]
+	"getAll": ["select employeeId,firstname,lastname,department,", "salary from employee"],
+	"get":["select employeeId,firstname,lastname,department,","salary from employee where employeeId=?"],
+	"insert":["insert into employee (firstname,lastname,department,",	"salary,employeeId) values (?,?,?,?,?)"],
+	"delete":["delete from employee where employeeId=?"]
 }
